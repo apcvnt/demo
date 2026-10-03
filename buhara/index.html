@@ -540,6 +540,12 @@ body:has(> .v-page) { margin: 0; }
 .cta-big .v-btn { justify-content: center; font-size: 1.15rem; min-height: 62px; white-space: normal; text-align: center; width: 100%; }
 .uto { display: inline-block; background: rgb(242 169 59 / .16); color: var(--v-accent); border-radius: 6px; padding: 0 .35em; font-size: .9em; font-weight: 700; }
 .dock { display: none; }
+.reviews__head { align-items: start; }
+.reviews__gis { margin-top: var(--v-3); }
+.reviews__head > .reviews__rating { flex-basis: 100%; }
+.points { display: grid; gap: .35rem; margin-top: var(--v-3); padding-top: var(--v-4); border-top: 1px solid var(--v-hair); }
+.points b { color: var(--v-ink); }
+.points a { font-weight: 700; color: var(--v-ink); text-decoration: none; white-space: nowrap; }
 @media (max-width: 420px) { .bar .v-btn--ghost { display: none; } .bar__mark { overflow: hidden; text-overflow: ellipsis; } }
 .tariff--one .tariff__row { grid-template-columns: 7rem 1fr !important; }
 .hero__note { top: auto; gap: .45em; }
@@ -563,19 +569,44 @@ body:has(> .v-page) { margin: 0; }
   .dock a { display: flex; align-items: center; justify-content: center; gap: .5rem; min-height: 58px; border-radius: 14px; font: 800 1.1rem/1 var(--v-font-text); text-decoration: none; }
   .dock .call { background: var(--v-accent); color: var(--v-accent-ink) !important; }
   .dock .tg { background: #f1ede4; color: #16110a !important; }
-.points { display: grid; gap: .35rem; margin-top: var(--v-3); padding-top: var(--v-4); border-top: 1px solid var(--v-hair); }
-.points b { color: var(--v-ink); }
-.points a { font-weight: 700; color: var(--v-ink); text-decoration: none; white-space: nowrap; }
   .foot { padding-bottom: 6.5rem; }
   .v-page .bar { top: 2.9rem; }
   .bar__mark { font-size: 1rem !important; }
   .hero__copy .v-lede { font-size: 1.2rem; }
 }
+
+.bf { display: grid; gap: var(--v-4); margin-top: var(--v-5); max-width: 34rem; padding: var(--v-5); border-radius: var(--v-radius);
+  background: rgb(20 24 33 / .9); box-shadow: var(--v-edge), var(--v-e2); }
+.bf__title { font-family: var(--v-font-display); font-weight: 700; font-size: var(--v-t-lg); line-height: 1.2; }
+.bf__sub { color: var(--v-ink-soft); font-size: var(--v-t-sm); margin-top: -.4rem; }
+.bf label { display: grid; gap: .4rem; font-weight: 700; font-size: 1.05rem; }
+.bf select, .bf input, .bf textarea { width: 100%; font: 600 1.1rem/1.3 var(--v-font-text); color: var(--v-ink); background: #0f1218;
+  border: 2px solid var(--v-hair-strong); border-radius: 12px; padding: .8rem 1rem; min-height: 56px; outline: none; }
+.bf textarea { min-height: 84px; resize: vertical; }
+.bf select { -webkit-appearance: none; appearance: none; padding-right: 2.6rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 8l5 5 5-5' fill='none' stroke='%23f2a93b' stroke-width='2.2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right .9rem center; background-size: 1.2rem; }
+.bf select option { background: #141821; color: var(--v-ink); }
+.bf select:focus, .bf input:focus, .bf textarea:focus { border-color: var(--v-accent); box-shadow: 0 0 0 3px rgb(242 169 59 / .25); }
+.bf__row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--v-3); }
+@media (max-width: 520px) { .bf__row { grid-template-columns: 1fr; } }
+.bf__price { display: none; padding: .8rem 1rem; border-radius: 12px; background: rgb(242 169 59 / .14); font-weight: 700; font-size: 1.1rem; }
+.bf__price b { color: var(--v-accent); font-size: 1.3rem; }
+.bf__btn { justify-content: center; width: 100%; min-height: 62px !important; font-size: 1.15rem !important; background: #25d366 !important; color: #08260f !important; border: 0; cursor: pointer; }
+.bf__err { display: none; color: #ff8a7a; font-weight: 700; }
+.bf__note { color: var(--v-ink-soft); font-size: var(--v-t-sm); }
+.bf__preview { display: none; gap: var(--v-3); padding: var(--v-4); border-radius: 12px; background: #0b141a; border: 2px solid #25d366; }
+.bf__preview h4 { margin: 0; font: 800 1.1rem/1.3 var(--v-font-text); color: #25d366; }
+.bf__bubble { white-space: pre-wrap; background: #005c4b; color: #e9edef; border-radius: 12px 12px 4px 12px; padding: .8rem 1rem; font: 500 1.05rem/1.45 var(--v-font-text); }
+.bf__preview p { margin: 0; color: var(--v-ink-soft); font-size: var(--v-t-sm); }
+.bf, .bf > *, .bf__preview > * { min-width: 0; }
+.bf__preview .v-btn { white-space: normal; width: 100%; justify-content: center; text-align: center; min-height: 56px; }
+.close__inner > div { min-width: 0; }
 </style>
 </head>
 <body>
 <div class="v-page">
-  <div class="demo">Демо-версия сайта для «Бухара». Фото, цены и отзывы взяты с Яндекс Карт</div>
+  <div class="demo">Демо-версия сайта для «Бухара». Фото, цены и отзывы — с Яндекс Карт и 2ГИС</div>
   <span data-v-progress>
 </span>
   <div class="v-grain" aria-hidden="true">
@@ -588,7 +619,7 @@ body:has(> .v-page) { margin: 0; }
     <nav class="bar__right" aria-label="Быстрые ссылки">
       <a class="bar__tel" href="tel:+79962102838">+7 (996) 210-28-38</a>
       <a class="v-btn v-btn--ghost" href="#ceny">Цены</a>
-      <a class="v-btn" href="#zapis">Позвонить</a>
+      <a class="v-btn" href="#zapis">Записаться</a>
     </nav>
   </header>
 
@@ -685,7 +716,7 @@ body:has(> .v-page) { margin: 0; }
           </div>
 
           <div class="season__after">
-            <a class="v-btn" href="#zapis" data-v-cue="0.7 1 0.05 0">Позвонить</a>
+            <a class="v-btn" href="#zapis" data-v-cue="0.7 1 0.05 0">Записаться</a>
           </div>
         </div>
       </div>
@@ -756,13 +787,14 @@ body:has(> .v-page) { margin: 0; }
     <section class="v-section" data-v-act="flow" data-v-drift="#0b0d11" id="otzyvy" aria-label="Отзывы с Яндекс.Карт">
       <div class="v-wrap reviews">
         <div class="reviews__head" data-v-in data-v-stagger="60">
-          <h2 class="v-display v-display--md">Что пишут на Яндекс.Картах</h2>
+          <h2 class="v-display v-display--md">Что пишут клиенты</h2>
           <div class="reviews__rating">
-            <span class="reviews__num v-nums">4.8</span>
+            <span class="reviews__num v-nums">4,8</span>
             <span class="reviews__stars" style="--r: 4.8" aria-label="рейтинг 4.8 из 5">
 </span>
-            <span class="v-soft">29 оценок · 19 отзывов</span>
-            <a href="https://yandex.ru/maps/org/bukhara/70925106672/reviews/" target="_blank" rel="noopener">Читать все отзывы на Картах</a>
+            <span class="v-soft">Яндекс Карты · 29 оценок · 19 отзывов</span>
+            <a href="https://yandex.ru/maps/org/bukhara/70925106672/reviews/" target="_blank" rel="noopener">Отзывы на Яндекс Картах</a></div>
+          <div class="reviews__rating reviews__gis"><span class="reviews__num v-nums">5,0</span><span class="reviews__stars" style="--r: 5.0" aria-label="рейтинг 5,0 из 5"></span><span class="v-soft">2ГИС · 196 оценок</span><a href="https://2gis.ru/tyumen/firm/70000001069244485" target="_blank" rel="noopener">Отзывы в 2ГИС</a>
           </div>
         </div>
         <ul class="reviews__list" data-v-in data-v-stagger="90">
@@ -828,7 +860,31 @@ body:has(> .v-page) { margin: 0; }
         <div class="close__inner">
           <div data-v-in data-v-stagger="80">
             <h2 class="v-display v-display--lg">Позвоните — приедем или ждём у себя</h2>
-            <p class="v-lede">Скажите, что случилось с колесом и где вы, — подскажем, быстрее приехать к нам или вызвать мастера.</p>
+            <p class="v-lede">Оставьте заявку или вызовите мастера — ответим в WhatsApp. Или просто позвоните.</p>
+            
+            <form class="bf" data-bf='{&quot;wa&quot;: &quot;79962102838&quot;, &quot;demo&quot;: true, &quot;prices&quot;: null, &quot;priceService&quot;: &quot;Вызвать выездного мастера&quot;, &quot;priceNote&quot;: &quot;&quot;}' novalidate>
+              <div class="bf__title">Онлайн-заявка — без звонка</div>
+              <p class="bf__sub">Заполните за минуту — мастер «Бухары» ответит в WhatsApp и подтвердит время.</p>
+              <label>Что нужно сделать<select name="service"><option>Вызвать выездного мастера</option><option>Переобувка комплекта</option><option>Правка или сварка дисков</option><option>Шиповка</option><option>Другое</option></select></label>
+              <label>Радиус колёс<select name="radius"><option>R13–R14</option><option>R15</option><option>R16</option><option>R17</option><option>R18</option><option>R19</option><option>R20</option><option>R21</option><option>R22 и больше</option><option>Не знаю</option></select></label>
+              <div class="bf__price" aria-live="polite"></div>
+              <div class="bf__row">
+                <label>День<select name="day"></select></label>
+                <label>Время<select name="time"><option>Как можно скорее</option><option>Утром (9:00–12:00)</option><option>Днём (12:00–17:00)</option><option>Вечером (17:00–23:00)</option></select></label>
+              </div>
+              <label>Ваше имя<input name="name" autocomplete="name" placeholder="Например, Сергей"></label>
+              <label>Телефон<input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 ___ ___-__-__" required></label>
+              <label>Комментарий <span class="v-soft" style="font-weight:500">(необязательно)</span><textarea name="comment" placeholder="Для выезда укажите адрес и что случилось с колесом"></textarea></label>
+              <p class="bf__err">Укажите телефон, чтобы вам могли ответить.</p>
+              <button class="v-btn bf__btn" type="submit">Отправить заявку в WhatsApp</button>
+              <p class="bf__note">Заявку можно оставить в любое время суток, даже ночью.</p>
+              <div class="bf__preview" role="status">
+                <h4>Демо: так заявка придёт владельцу в WhatsApp</h4>
+                <div class="bf__bubble"></div>
+                <p>В рабочей версии сайта это сообщение сразу уйдёт на WhatsApp шиномонтажа — без звонка и ожидания на линии.</p>
+                <a class="v-btn v-btn--ghost" href="#" target="_blank" rel="noopener">Открыть пример в своём WhatsApp</a>
+              </div>
+            </form>
             <div class="cta-big">
               <a class="v-btn" href="tel:+79962102838"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg> <span>Позвонить <span style="white-space:nowrap">+7 (996) 210-28-38</span></span></a>
               <a class="v-btn v-btn--ghost" href="https://yandex.ru/maps/org/bukhara/70925106672/" target="_blank" rel="noopener"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg> Построить маршрут</a>
@@ -853,7 +909,7 @@ body:has(> .v-page) { margin: 0; }
   </main>
   <nav class="dock" aria-label="Связаться">
     <a class="call" href="tel:+79962102838"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg> Позвонить</a>
-    <a class="tg" href="https://yandex.ru/maps/org/bukhara/70925106672/" target="_blank" rel="noopener"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg> Маршрут</a>
+    <a class="tg" href="#zapis" target="_blank" rel="noopener"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M7 2h2v2h6V2h2v2h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3V2zm12 8H5v9h14v-9zM7 12h4v4H7v-4z"/></svg> Заявка</a>
   </nav>
 </div>
 
@@ -1259,6 +1315,45 @@ body:has(> .v-page) { margin: 0; }
   })();
 
 
+</script>
+
+<script>
+(function () {
+  var f = document.querySelector('[data-bf]'); if (!f) return;
+  var cfg = JSON.parse(f.getAttribute('data-bf'));
+  // дни: сегодня + 6
+  var daySel = f.querySelector('[name=day]'), mon = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+  var wd = ['вс','пн','вт','ср','чт','пт','сб'];
+  for (var i = 0; i < 7; i++) { var d = new Date(); d.setDate(d.getDate() + i);
+    var t = (i === 0 ? 'Сегодня, ' : i === 1 ? 'Завтра, ' : '') + d.getDate() + ' ' + mon[d.getMonth()] + (i > 1 ? ' (' + wd[d.getDay()] + ')' : '');
+    var o = document.createElement('option'); o.textContent = t; daySel.appendChild(o); }
+  var price = f.querySelector('.bf__price');
+  function upd() {
+    if (!cfg.prices) return;
+    var s = f.service.value, r = f.radius.value, p = cfg.prices[r];
+    if (s === cfg.priceService && p) { price.style.display = 'block'; price.innerHTML = 'Ориентировочно: <b>' + p + '</b>' + (cfg.priceNote ? '<br><span style="font-weight:500;font-size:.95rem">' + cfg.priceNote + '</span>' : ''); }
+    else price.style.display = 'none';
+  }
+  f.addEventListener('change', upd);
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var err = f.querySelector('.bf__err'), tel = f.phone.value.replace(/[^\d+]/g, '');
+    if (tel.replace(/\D/g, '').length < 10) { err.style.display = 'block'; f.phone.focus(); return; }
+    err.style.display = 'none';
+    var L = ['Здравствуйте! Заявка с сайта:', 'Услуга: ' + f.service.value, 'Радиус: ' + f.radius.value];
+    if (f.point) L.push('Точка: ' + f.point.value);
+    L.push('Когда: ' + f.day.value + ', ' + f.time.value);
+    if (f.name.value.trim()) L.push('Имя: ' + f.name.value.trim());
+    L.push('Телефон: ' + f.phone.value.trim());
+    if (f.comment.value.trim()) L.push('Комментарий: ' + f.comment.value.trim());
+    var text = L.join('\n');
+    if (!cfg.demo) { location.href = 'https://wa.me/' + cfg.wa + '?text=' + encodeURIComponent(text); return; }
+    var pv = f.querySelector('.bf__preview'); pv.style.display = 'grid';
+    pv.querySelector('.bf__bubble').textContent = text;
+    pv.querySelector('a').href = 'https://wa.me/?text=' + encodeURIComponent(text);
+    pv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+})();
 </script>
 </body>
 </html>
