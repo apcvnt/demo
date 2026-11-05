@@ -153,6 +153,40 @@ details p{color:var(--muted);margin-top:10px}
 .contacts .btn{width:100%}
 @media(min-width:900px){.partner{grid-template-columns:300px 1fr}.contacts{grid-template-columns:repeat(3,1fr)}}
 
+/* business */
+.biz{position:relative;overflow:hidden;background:linear-gradient(160deg,#0F3A27 0%,#17573A 55%,#1F6E4A 100%);color:#fff}
+.hexbg{position:absolute;inset:0;opacity:.18;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='104' height='120' viewBox='0 0 104 120'%3E%3Cpath d='M52 0 104 30v60L52 120 0 90V30zM52 0v60M0 30l52 30 52-30' fill='none' stroke='%23F2C46B' stroke-width='1.2'/%3E%3C/svg%3E");-webkit-mask-image:linear-gradient(180deg,#000,transparent 45%);mask-image:linear-gradient(180deg,#000,transparent 45%)}
+.biz .wrap{position:relative}
+.biz h2{color:#fff}.biz .hl{color:#F2B24A}
+.biz .lead{color:#D6EADF}
+.bigs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:8px 0 40px}
+@media(min-width:900px){.bigs{grid-template-columns:repeat(4,1fr)}}
+.big{background:rgba(255,255,255,.08);border:1px solid rgba(242,178,74,.45);border-radius:var(--r);padding:20px 16px}
+.big b{display:block;font:700 clamp(40px,10vw,58px)/1 "Playfair Display",serif;color:#F2B24A;margin-bottom:8px}
+.big span{font-size:16px;line-height:1.4;color:#E8F2EC;font-weight:600}
+.bh{color:#fff;font-size:26px;margin:0 0 16px}
+.bonus{display:grid;gap:12px;margin-bottom:40px}
+@media(min-width:700px){.bonus{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1050px){.bonus{grid-template-columns:repeat(4,1fr)}}
+.bn{background:#FBF7EF;color:var(--ink);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:6px}
+.bn i{font:700 15px Manrope,sans-serif;font-style:normal;color:#fff;background:#DE8A1E;border-radius:20px;padding:3px 10px;align-self:flex-start;color:#2A1E14}
+.bn b{font-size:19px;line-height:1.25}.bn span{font-size:16px;color:var(--muted)}
+.packs{display:grid;gap:12px;margin-bottom:40px}
+@media(min-width:760px){.packs{grid-template-columns:repeat(3,1fr)}}
+.pk{border:2px solid rgba(255,255,255,.35);border-radius:var(--r);padding:22px;text-align:center}
+.pk small{display:block;font:700 15px Manrope;letter-spacing:.14em;text-transform:uppercase;color:#F2B24A}
+.pk b{display:block;font:700 40px/1.1 "Playfair Display",serif;margin:6px 0}
+.pk span{color:#D6EADF;font-size:16px}
+.pk-hot{background:#DE8A1E;border-color:#DE8A1E;color:#2A1E14}.pk-hot small,.pk-hot span{color:#2A1E14}
+.ranks{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px;counter-reset:r}
+.ranks li{counter-increment:r;background:rgba(255,255,255,.1);border-radius:30px;padding:9px 14px 9px 10px;font-weight:700;font-size:16px;display:flex;align-items:center;gap:8px}
+.ranks li::before{content:counter(r);width:26px;height:26px;border-radius:50%;background:#F2B24A;color:#2A1E14;font-size:14px;display:grid;place-items:center}
+.ranks li.top{background:#F2B24A;color:#2A1E14}.ranks li.top::before{background:#2A1E14;color:#F2B24A}
+.bizcta{background:#FBF7EF;color:var(--ink);border-radius:var(--r);padding:24px;display:grid;gap:16px;align-items:center}
+.bizcta b{display:block;font:700 22px/1.25 "Playfair Display",serif;margin-bottom:6px}.bizcta span{color:var(--muted)}
+@media(min-width:900px){.bizcta{grid-template-columns:1fr auto}}
+.fine{font-size:14px;color:#A9C9B6;margin-top:14px}
+
 /* form */
 .formsec{background:var(--green);color:#fff}
 .formsec h2{color:#fff}.formsec .lead{color:#D6EADF}
@@ -313,12 +347,49 @@ const PARTNER = {
   </div>
 </section>
 
-<section class="alt" id="partner">
+<section class="biz" id="partner">
+  <div class="hexbg" aria-hidden="true"></div>
   <div class="wrap">
-    <span class="kicker">Партнёрство</span>
-    <h2>Партнёрская программа WHIEDA</h2>
-    <div class="ph" style="min-height:280px">Место для контента о партнёрской программе <span class="todo">ждём материалы</span></div>
-    <div style="margin-top:20px"><a class="btn btn-red" href="#zayavka" data-interest="Бизнес">Узнать о партнёрстве</a></div>
+    <span class="kicker kicker-or">Бизнес с WHIEDA</span>
+    <h2>Один маркетинг-план —<br><span class="hl">8 источников дохода</span></h2>
+    <p class="lead">Комбинированная система: линейный план, юнилевел и бинар работают одновременно. Вы получаете вознаграждение и за личные рекомендации, и за рост всей команды.</p>
+
+    <div class="bigs">
+      <div class="big"><b>100%</b><span>кэшбэк баллами за стартовую покупку</span></div>
+      <div class="big"><b>50%</b><span>степ-бонус сразу при подключении пары</span></div>
+      <div class="big"><b>10%</b><span>бинарный бонус с оборота слабой ветки, ежедневно</span></div>
+      <div class="big"><b>5%</b><span>с повторных покупок команды каждый месяц</span></div>
+    </div>
+
+    <h3 class="bh">Виды вознаграждений</h3>
+    <div class="bonus">
+      <div class="bn"><i>01</i><b>Линейный бонус</b><span>Процент с покупок партнёров, которых вы пригласили лично.</span></div>
+      <div class="bn"><i>02</i><b>Юнилевел</b><span>Доход с нескольких уровней команды в глубину — не только с первой линии.</span></div>
+      <div class="bn"><i>03</i><b>Бинарный бонус</b><span>Команда растёт в две ветки. Партнёры сверху тоже помогают вам их наполнять.</span></div>
+      <div class="bn"><i>04</i><b>Степ-бонус</b><span>Начисляется мгновенно, когда в паре появляются партнёры слева и справа.</span></div>
+      <div class="bn"><i>05</i><b>Бонус повторных покупок</b><span>Команда покупает продукцию для себя — вы получаете процент каждый месяц.</span></div>
+      <div class="bn"><i>06</i><b>Ранговый бонус</b><span>С высоких рангов — доля от оборота региона и всей компании.</span></div>
+      <div class="bn"><i>07</i><b>Авто- и тур-бонусы</b><span>Автомобиль и путешествия за достижение квалификаций.</span></div>
+      <div class="bn"><i>08</i><b>Кэшбэк</b><span>Стартовая покупка возвращается баллами — ими можно оплатить до половины следующих заказов.</span></div>
+    </div>
+
+    <h3 class="bh">Старт — на выбор</h3>
+    <div class="packs">
+      <div class="pk"><small>Start</small><b>250 PV</b><span>Знакомство с продукцией и бизнесом</span></div>
+      <div class="pk pk-hot"><small>Standard</small><b>500 PV</b><span>Больше возможностей и первые квалификации</span></div>
+      <div class="pk"><small>Premium</small><b>2000 PV</b><span>Доступ ко всем квалификациям</span></div>
+    </div>
+
+    <h3 class="bh">Карьерная лестница</h3>
+    <ol class="ranks">
+      <li>Director</li><li>Regional Director</li><li>National Director</li><li>International Director</li><li>Continental Director</li><li>World Director</li><li>Global Director</li><li class="top">Ambassador</li>
+    </ol>
+
+    <div class="bizcta">
+      <div><b>Хотите разобрать маркетинг-план на цифрах?</b><span>Покажу, как он работает, и помогу выбрать старт под ваши цели.</span></div>
+      <a class="btn btn-or" href="#zayavka" data-interest="Бизнес">Обсудить на звонке</a>
+    </div>
+    <p class="fine">Доход зависит от личной активности партнёра. Условия — по действующему маркетинг-плану WHIEDA.</p>
   </div>
 </section>
 
