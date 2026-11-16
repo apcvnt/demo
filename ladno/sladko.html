@@ -6,7 +6,7 @@
 <title>Ладно Сладко — торты, пирожные и выпечка под заказ в Тобольске</title>
 <meta name="description" content="Торты, пирожные и выпечка «Ладно Сладко» под заказ: за 3 дня, предоплата 50%. Тобольск.">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#F7F2EA">
+<meta name="theme-color" content="#4E553A">
 <link rel="icon" href="assets/img/logo-round.webp">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -26,36 +26,53 @@
   <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19C4 10 10 4 20 4c0 10-6 16-15 15z"/><path d="M5 19c4-5 8-8 12-11"/></symbol>
   <symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 2v20M3.5 7l17 10M3.5 17l17-10"/><path d="M9 4l3 2 3-2M9 20l3-2 3 2"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2.5l2.2 11h10.6l2-8H6.5"/><circle cx="9.5" cy="19.5" r="1.4"/><circle cx="17" cy="19.5" r="1.4"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M10 6l6 6-6 6"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h12v10H2zM14 10h4l3 3v3h-7"/><circle cx="6" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></symbol>
+  <symbol id="i-pot" viewBox="0 0 24 24"><path d="M4 10h16v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M2 10h20M9 6c0-1 1-1 1-2M14 6c0-1 1-1 1-2"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></symbol>
 </defs></svg>
 <a class="sr" href="#main">Перейти к содержанию</a>
 <p class="note">Черновик сайта. <span class="todo">Так</span> отмечено то, что нужно уточнить у Алёны.</p>
 <header class="hdr">
   <div class="wrap">
-    <a class="logo" href="index.html" aria-label="Ладно — на главную"><img src="assets/img/logo-mark.webp" alt="Ладно" width="758" height="282"></a>
+    <a class="logo" href="index.html" aria-label="Ладно — на главную"><img class="full" src="assets/img/logo-light.webp" alt="Ладно. Вкусно. Удобно. С любовью." width="900" height="341"><img class="mark" src="assets/img/logo-mark-light.webp" alt="Ладно" width="758" height="282"></a>
     <nav aria-label="Основное меню">
-      <a href="index.html" data-nav="home">Главная</a>
-      <a href="sladko.html" data-nav="sladko" aria-current="page">Ладно Сладко</a>
-      <a href="vprok.html" data-nav="vprok">Ладно Впрок</a>
-      <a href="index.html#about">О нас</a>
-      <a href="index.html#contacts">Контакты</a>
+      <div class="dd">
+        <button type="button" class="dd-btn" aria-expanded="false" aria-controls="ddMenu">Каталог <svg class="i"><use href="#i-down"/></svg></button>
+        <div class="dd-menu" id="ddMenu">
+          <a href="sladko.html" data-nav="sladko" aria-current="page"><img src="assets/img/badge-sladko.webp" alt="" width="44" height="44"><span>Ладно Сладко<small>десерты и выпечка</small></span></a>
+          <a href="vprok.html" data-nav="vprok"><img src="assets/img/badge-vprok.webp" alt="" width="44" height="44"><span>Ладно Впрок<small>заморозка на каждый день</small></span></a>
+          <a href="gotovo.html" data-nav="gotovo"><img src="assets/img/badge-gotovo.webp" alt="" width="44" height="44"><span>Ладно Готово<small>готовые блюда и полуфабрикаты</small></span></a>
+          <a href="pasta.html" data-nav="pasta"><img src="assets/img/badge-pasta.webp" alt="" width="44" height="44"><span>Ладно Паста<small>свежая паста и тесто</small></span></a>
+        </div>
+      </div>
+      <a href="about.html" data-nav="about">О нас</a>
+      <a href="about.html#delivery">Доставка</a>
+      <a href="index.html#reviews">Отзывы</a>
+      <a href="#contacts">Контакты</a>
     </nav>
-    <a class="tel" href="tel:+79199345454">+7 919 934-54-54</a>
-    <button class="iconbtn" type="button" data-open-cart aria-label="Моя заявка"><svg class="i"><use href="#i-bag"/></svg><span class="cnt">0</span></button>
+    <button class="iconbtn" type="button" data-open-search aria-label="Поиск по каталогу"><svg class="i"><use href="#i-search"/></svg></button>
+    <button class="iconbtn" type="button" data-open-cart aria-label="Моя заявка"><svg class="i"><use href="#i-cart"/></svg><span class="cnt">0</span></button>
     <button class="iconbtn burger" type="button" data-open-menu aria-label="Открыть меню"><svg class="i"><use href="#i-menu"/></svg></button>
   </div>
 </header>
 
 <aside class="drawer" id="drawer" aria-label="Меню">
-  <div class="top"><img src="assets/img/logo-mark.webp" alt="Ладно" width="758" height="282"><button class="iconbtn" type="button" data-close aria-label="Закрыть меню" style="font-size:30px">×</button></div>
+  <div class="top"><img src="assets/img/logo-mark.webp" alt="Ладно" width="758" height="282"><button class="iconbtn dark" type="button" data-close aria-label="Закрыть меню" style="font-size:30px">×</button></div>
   <ul>
     <li><a href="index.html" data-nav="home">Главная</a></li>
-    <li><a href="sladko.html" data-nav="sladko" aria-current="page"><span class="dot" style="background:var(--pink)"></span>Ладно Сладко</a></li>
-    <li><a href="vprok.html" data-nav="vprok"><span class="dot" style="background:var(--sage)"></span>Ладно Впрок</a></li>
-    <li><span class="soon"><span class="dot" style="background:var(--car)"></span>Ладно Готово<small>скоро</small></span></li>
-    <li><span class="soon"><span class="dot" style="background:var(--teal)"></span>Ладно Паста<small>скоро</small></span></li>
-    <li><a href="index.html#about">О нас</a></li>
-    <li><a href="index.html#order">Как заказать</a></li>
-    <li><a href="index.html#contacts">Контакты</a></li>
+    <li><a href="sladko.html" data-nav="sladko" aria-current="page"><img class="lb" src="assets/img/badge-sladko.webp" alt="" width="40" height="40">Ладно Сладко</a></li>
+    <li><a href="vprok.html" data-nav="vprok"><img class="lb" src="assets/img/badge-vprok.webp" alt="" width="40" height="40">Ладно Впрок</a></li>
+    <li><a href="gotovo.html" data-nav="gotovo"><img class="lb" src="assets/img/badge-gotovo.webp" alt="" width="40" height="40">Ладно Готово</a></li>
+    <li><a href="pasta.html" data-nav="pasta"><img class="lb" src="assets/img/badge-pasta.webp" alt="" width="40" height="40">Ладно Паста</a></li>
+    <li><a href="about.html" data-nav="about">О нас</a></li>
+    <li><a href="about.html#delivery">Доставка и оплата</a></li>
+    <li><a href="index.html#reviews">Отзывы</a></li>
+    <li><a href="#contacts">Контакты</a></li>
   </ul>
   <div class="bottom">
     <button class="btn block" type="button" data-chat>Спросить консультанта</button>
@@ -63,6 +80,13 @@
     <a class="ph" href="tel:+79199345454">+7 919 934-54-54</a>
   </div>
 </aside>
+
+<div class="search" id="search" role="dialog" aria-label="Поиск по каталогу">
+  <div class="wrap">
+    <div class="sbox"><svg class="i"><use href="#i-search"/></svg><input id="searchInput" type="search" placeholder="Найти: медовик, пельмени, борщ…" aria-label="Что ищем" autocomplete="off"><button class="iconbtn dark" type="button" data-close aria-label="Закрыть поиск" style="font-size:28px">×</button></div>
+    <ul class="sres" id="searchRes"></ul>
+  </div>
+</div>
 <main id="main">
 <section class="lhero" style="padding-bottom:26px">
   <div class="wrap">
@@ -79,6 +103,7 @@
     </div>
   </div>
 </section>
+<nav class="linebar" aria-label="Линейки"><div class="wrap"><a href="sladko.html" aria-current="page"><img src="assets/img/sq-sladko.webp" alt="Ладно Сладко" width="154" height="145"></a><a href="vprok.html"><img src="assets/img/sq-vprok.webp" alt="Ладно Впрок" width="154" height="145"></a><a href="gotovo.html"><img src="assets/img/sq-gotovo.webp" alt="Ладно Готово" width="154" height="145"></a><a href="pasta.html"><img src="assets/img/sq-pasta.webp" alt="Ладно Паста" width="154" height="145"></a></div></nav>
 <nav class="chips" id="chips" aria-label="Разделы"><div class="wrap"></div></nav>
 <div id="catalog" data-line="sladko"></div>
 <section style="padding-top:20px">
@@ -91,50 +116,19 @@
         <li>Если десерт уже готов и&nbsp;есть в&nbsp;наличии, у&nbsp;него будет метка «В&nbsp;наличии».</li>
       </ul>
     </div>
-    <div class="other">
-      <a class="lcard vprok" href="vprok.html"><img src="assets/img/badge-vprok.webp" alt="" width="390" height="390"><div><b>Ладно Впрок</b><span>Котлеты, супы, блины, пельмени и&nbsp;вареники.</span><span class="go">Смотреть →</span></div></a>
-    </div>
   </div>
 </section>
-</main>
-<footer>
+<section class="zayavka" id="zayavka">
   <div class="wrap">
-    <img src="assets/img/logo-round-light.webp" alt="Ладно. Вкусно. Удобно. С любовью." width="640" height="630">
-    <div>
-      <p class="motto">Когда дома всё ладно</p>
-      <p>«Ладно», Тобольск. Десерты и выпечка, полуфабрикаты, готовые блюда, паста и соусы.</p>
-      <p>Заказы: <a href="tel:+79199345454">+7 919 934-54-54</a> · <a href="https://max.ru/join/dplYfGCwXYH5dEIGvfwO4_H_sBzt-JHOqxUhsV0CYhI" target="_blank" rel="noopener">MAX</a></p>
-      <p>ИП Баянова Алёна Сергеевна · ИНН 665404291856 · ОГРНИП 324723200115091</p>
-      <p style="margin-top:14px;opacity:.85">Дизайн и разработка — Студия сайтов «Ариадна», Тюмень.</p>
+    <div class="zhead">
+      <span class="kicker">Заявка</span>
+      <h2>Оставьте заявку — мы&nbsp;перезвоним</h2>
+      <p class="lead">Заявки принимаем круглосуточно. Администратор перезвонит в&nbsp;рабочее время и&nbsp;обговорит детали. Это ещё не&nbsp;оплата.</p>
     </div>
-  </div>
-</footer>
-
-<nav class="tabbar" aria-label="Быстрое меню">
-  <a href="index.html" data-nav="home"><svg class="i"><use href="#i-home"/></svg><span>Главная</span></a>
-  <a href="sladko.html" data-nav="sladko" aria-current="page"><svg class="i"><use href="#i-cake"/></svg><span>Сладко</span></a>
-  <a href="vprok.html" data-nav="vprok"><svg class="i"><use href="#i-dumpling"/></svg><span>Впрок</span></a>
-  <button type="button" data-open-cart><svg class="i"><use href="#i-bag"/></svg><span>Заявка</span><b class="cnt">0</b></button>
-  <button type="button" data-open-menu><svg class="i"><use href="#i-menu"/></svg><span>Меню</span></button>
-</nav>
-
-<button class="cloud" id="cloud" type="button" aria-label="Спросить консультанта" aria-expanded="false" aria-controls="chat">
-  <svg class="i"><use href="#i-chat"/></svg><span class="x" aria-hidden="true">×</span>
-  <span class="hint">Есть вопрос? Спросите консультанта</span>
-</button>
-<div class="chat" id="chat" role="dialog" aria-label="Консультант «Ладно»">
-  <header><img src="assets/img/logo-round.webp" alt=""><div><b>Консультант «Ладно»</b><span>отвечаем круглосуточно</span></div></header>
-  <div class="log" id="chatLog" aria-live="polite"></div>
-  <button class="human" type="button" id="human">Позвать администратора</button>
-  <form id="chatForm"><input id="chatInput" type="text" placeholder="Напишите вопрос…" autocomplete="off" aria-label="Ваш вопрос"><button type="submit" aria-label="Отправить"><svg class="i"><use href="#i-send"/></svg></button></form>
-</div>
-
-<div class="veil" id="veil"></div>
-<section class="sheet" id="sheet" role="dialog" aria-label="Моя заявка">
-  <div class="sh"><h2>Моя заявка</h2><button class="iconbtn" type="button" data-close aria-label="Закрыть" style="font-size:30px">×</button></div>
-  <div class="body">
-    <ul class="cart" id="cartList"></ul>
-    <form id="orderForm" novalidate>
+    <div class="zgrid">
+      <form id="orderForm" class="oform" novalidate>
+      <div class="f" style="margin-top:0">Ваш выбор</div>
+      <ul class="cart" id="cartList2"></ul>
       <label class="f" for="fName">Как к вам обращаться</label>
       <input class="f-in" id="fName" name="name" autocomplete="name" placeholder="Например, Ольга">
       <label class="f" for="fPhone">Телефон</label>
@@ -150,7 +144,72 @@
       <button class="btn block" type="submit">Отправить заявку</button>
       <div class="msg" id="orderMsg" role="status" aria-live="polite"></div>
     </form>
-    <p style="font-size:14.5px;color:var(--muted);margin:14px 0 0">Заявка уходит администратору. Мы перезвоним с 9:00 до 20:00 и обговорим детали. Это ещё не оплата.</p>
+      <aside class="zcall">
+        <img src="assets/img/logo-round-light.webp" alt="" width="640" height="630" loading="lazy">
+        <h3>Есть вопрос?</h3>
+        <p>Консультант «Ладно» подскажет состав и&nbsp;сроки и&nbsp;поможет выбрать — в&nbsp;любое время суток.</p>
+        <button class="btn light block" type="button" data-chat>Спросить консультанта</button>
+        <p class="ph">Или позвоните:<br><a href="tel:+79199345454">+7 919 934-54-54</a></p>
+      </aside>
+    </div>
+  </div>
+</section>
+</main>
+<footer id="contacts">
+  <div class="wrap">
+    <div class="frow">
+      <img class="flogo" src="assets/img/logo-light.webp" alt="Ладно. Вкусно. Удобно. С любовью." width="900" height="341">
+      <div class="fi"><svg class="i"><use href="#i-truck"/></svg><div><b>Доставка</b>по Тобольску<br>и ближайшему пригороду</div></div>
+      <div class="fi"><svg class="i"><use href="#i-pin"/></svg><div><b>Самовывоз</b>г. Тобольск,<br>6-й микрорайон, д.&nbsp;110, корпус&nbsp;1</div></div>
+      <div class="fi"><svg class="i"><use href="#i-clock"/></svg><div><b>Режим работы</b>10:00 – 19:00 <span class="todo">или 9–20?</span></div></div>
+      <div class="soc">
+        <a href="https://vk.ru/makovkatob" target="_blank" rel="noopener" aria-label="ВКонтакте">ВК</a>
+        <a href="https://max.ru/join/dplYfGCwXYH5dEIGvfwO4_H_sBzt-JHOqxUhsV0CYhI" target="_blank" rel="noopener" aria-label="MAX">MAX</a>
+      </div>
+    </div>
+    <div class="fbot">
+      <p>Заказы: <a href="tel:+79199345454">+7 919 934-54-54</a> · ИП Баянова Алёна Сергеевна · ИНН 665404291856 · ОГРНИП 324723200115091</p>
+      <p>Дизайн и разработка — Студия сайтов «Ариадна», Тюмень.</p>
+    </div>
+  </div>
+</footer>
+
+<nav class="tabbar" aria-label="Быстрое меню">
+  <a href="index.html" data-nav="home"><svg class="i"><use href="#i-home"/></svg><span>Главная</span></a>
+  <button type="button" data-open-lines data-nav="cat"><svg class="i"><use href="#i-grid"/></svg><span>Каталог</span></button>
+  <button type="button" data-open-cart><svg class="i"><use href="#i-cart"/></svg><span>Заявка</span><b class="cnt">0</b></button>
+  <button type="button" data-open-menu><svg class="i"><use href="#i-menu"/></svg><span>Меню</span></button>
+</nav>
+<section class="sheet lsheet" id="linesSheet" role="dialog" aria-label="Каталог">
+  <div class="sh"><h2>Каталог</h2><button class="iconbtn dark" type="button" data-close aria-label="Закрыть" style="font-size:30px">×</button></div>
+  <div class="body"><div class="sqgrid">
+    <a href="sladko.html"><img src="assets/img/sq-sladko.webp" alt="Ладно Сладко" width="154" height="145"><span>десерты и выпечка</span></a>
+    <a href="vprok.html"><img src="assets/img/sq-vprok.webp" alt="Ладно Впрок" width="154" height="145"><span>заморозка на каждый день</span></a>
+    <a href="gotovo.html"><img src="assets/img/sq-gotovo.webp" alt="Ладно Готово" width="154" height="145"><span>готовые блюда и полуфабрикаты</span></a>
+    <a href="pasta.html"><img src="assets/img/sq-pasta.webp" alt="Ладно Паста" width="154" height="145"><span>свежая паста и тесто</span></a>
+  </div></div>
+</section>
+
+<button class="cloud" id="cloud" type="button" aria-label="Спросить консультанта" aria-expanded="false" aria-controls="chat">
+  <svg class="i"><use href="#i-chat"/></svg><span class="x" aria-hidden="true">×</span>
+  <span class="hint">Есть вопрос? Спросите консультанта</span>
+</button>
+<div class="chat" id="chat" role="dialog" aria-label="Консультант «Ладно»">
+  <header><img src="assets/img/logo-round.webp" alt=""><div><b>Консультант «Ладно»</b><span>отвечаем круглосуточно</span></div></header>
+  <div class="log" id="chatLog" aria-live="polite"></div>
+  <button class="human" type="button" id="human">Позвать администратора</button>
+  <form id="chatForm"><input id="chatInput" type="text" placeholder="Напишите вопрос…" autocomplete="off" aria-label="Ваш вопрос"><button type="submit" aria-label="Отправить"><svg class="i"><use href="#i-send"/></svg></button></form>
+</div>
+
+<div class="veil" id="veil"></div>
+<section class="sheet" id="sheet" role="dialog" aria-label="Моя заявка">
+  <div class="sh"><h2>Моя заявка</h2><button class="iconbtn dark" type="button" data-close aria-label="Закрыть" style="font-size:30px">×</button></div>
+  <div class="body">
+    <ul class="cart" id="cartList"></ul>
+    <div style="display:grid;gap:10px;margin-top:16px">
+      <a class="btn block" href="#zayavka" data-go-form>Оформить заявку</a>
+      <button class="btn line block" type="button" data-close>Продолжить выбор</button>
+    </div>
   </div>
 </section>
 <div class="modal" id="modal" role="dialog" aria-label="Подробнее о блюде"><button class="close" type="button" data-close aria-label="Закрыть">×</button><div class="ph"></div><div class="in"></div></div>

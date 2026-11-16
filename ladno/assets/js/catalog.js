@@ -65,5 +65,11 @@ window.LADNO_LINES = {
       { id:'manty', name:'Манты', t:'Манты «%»', items: [ { n:'Классические' }, { n:'Домашние' }, { n:'Узбекские' } ]},
       { id:'hinkali', name:'Хинкали', t:'Хинкали %l', items: [ { n:'Грузинские' } ]},
       { id:'zapekanki', name:'Запеканки и сырники', t:'%', items: [] }
-    ]}
+    ]},
+  gotovo: {
+    title: 'Ладно Готово', status: '',
+    sections: [ { id:'blyuda', name:'Готовые блюда', t:'%', items: [] } ]},
+  pasta: {
+    title: 'Ладно Паста', status: '',
+    sections: [ { id:'pasta', name:'Паста и тесто', t:'%', items: [] } ]}
 };

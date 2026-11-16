@@ -13,12 +13,13 @@ const session = (() => { try { let s=sessionStorage.getItem('ladno-sid'); if(!s)
 
 /* ---------- слой-подложка и панели ---------- */
 const veil = $('#veil');
-function closeAll(){ $$('.drawer,.sheet,.modal').forEach(p=>p.classList.remove('on')); veil.classList.remove('on'); document.body.style.overflow=''; }
+function closeAll(){ $$('.drawer,.sheet,.modal,.search').forEach(p=>p.classList.remove('on')); veil.classList.remove('on'); document.body.style.overflow=''; }
 function openPanel(el){ closeAll(); closeChat(); el.classList.add('on'); veil.classList.add('on'); document.body.style.overflow='hidden';
   const f=el.querySelector('button,a,input'); if(f) setTimeout(()=>f.focus(),60); }
 veil.addEventListener('click', closeAll);
 document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ closeAll(); closeChat(); } });
 $$('[data-open-menu]').forEach(b=>b.addEventListener('click',()=>openPanel($('#drawer'))));
+$$('[data-open-lines]').forEach(b=>b.addEventListener('click',()=>openPanel($('#linesSheet'))));
 $$('[data-close]').forEach(b=>b.addEventListener('click',closeAll));
 $$('#drawer a').forEach(a=>a.addEventListener('click',()=>{ if(a.getAttribute('href').startsWith('#')) closeAll(); }));
 
@@ -31,17 +32,18 @@ function add(id,name){ const it=cart.find(i=>i.id===id); if(it) it.q++; else car
 function paintCart(){
   const n=total();
   $$('.cnt').forEach(c=>{ c.textContent=n; c.classList.toggle('on',n>0); });
-  const ul=$('#cartList');
-  ul.innerHTML = cart.length ? cart.map(i=>
+  const html = cart.length ? cart.map(i=>
     '<li><b>'+esc(i.name)+'</b><span class="qty"><button type="button" data-q="-1" data-id="'+i.id+'" aria-label="Меньше">−</button><span>'+i.q+'</span><button type="button" data-q="1" data-id="'+i.id+'" aria-label="Больше">+</button></span></li>').join('')
-    : '<li class="empty">Пока пусто. Нажмите «В заявку» у блюда — или просто напишите, что хотите, в поле ниже.</li>';
+    : '<li class="empty">Пока пусто. Нажмите «В заявку» у блюда в каталоге — или просто напишите, что хотите, в комментарии.</li>';
+  $$('#cartList,#cartList2').forEach(u=>u.innerHTML=html);
   $$('.goods [data-add]').forEach(b=>{ const on=cart.some(i=>i.id===b.dataset.add); b.classList.toggle('added',on); b.textContent= on ? 'В заявке ✓' : 'В заявку'; });
 }
-$('#cartList').addEventListener('click',e=>{
+$$('#cartList,#cartList2').forEach(u=>u.addEventListener('click',e=>{
   const b=e.target.closest('[data-q]'); if(!b) return;
   const it=cart.find(i=>i.id===b.dataset.id); if(!it) return;
   it.q+=Number(b.dataset.q); if(it.q<1) cart=cart.filter(i=>i!==it); save(); paintCart();
-});
+}));
+$$('[data-go-form]').forEach(a=>a.addEventListener('click',e=>{ e.preventDefault(); closeAll(); setTimeout(()=>{ $('#zayavka').scrollIntoView({behavior:'smooth'}); },60); }));
 $$('[data-open-cart]').forEach(b=>b.addEventListener('click',e=>{ e.preventDefault(); openPanel($('#sheet')); }));
 
 const form=$('#orderForm'), msg=$('#orderMsg');
@@ -63,7 +65,7 @@ form.addEventListener('submit', async e=>{
 });
 
 /* ---------- каталог на странице линейки ---------- */
-const cat=$('#catalog');
+const cat=$('#catalog[data-line]');
 let ITEMS={};
 if(cat && window.LADNO_LINES){
   const key=cat.dataset.line, line=LADNO_LINES[key];
@@ -83,7 +85,7 @@ if(cat && window.LADNO_LINES){
         '<div class="acts"><button class="btn line sm" type="button" data-more="'+id+'">Подробнее</button><button class="btn sm" type="button" data-add="'+id+'">В заявку</button></div></div></article>';
     }).join('');
     return '<section class="sec" id="'+s.id+'"><div class="wrap"><h2>'+s.name+' <small>'+(s.items.length? s.items.length+' поз.':'')+'</small></h2>'+
-      '<div class="goods">'+(cards||'<div class="nolist">Позиции этого раздела скоро появятся <span class="todo">уточнить у Алёны</span></div>')+'</div></div></section>';
+      '<div class="goods">'+(cards||'<div class="nolist">Ассортимент этого раздела скоро появится. Уже сейчас можно спросить консультанта или оставить заявку. <span class="todo">список от Алёны</span></div>')+'</div></div></section>';
   }).join('');
   cat.addEventListener('click',e=>{
     const a=e.target.closest('[data-add]'); if(a){ add(a.dataset.add, ITEMS[a.dataset.add].full); return; }
@@ -146,4 +148,46 @@ $('#human').addEventListener('click', async ()=>{
 });
 try{ if(!sessionStorage.getItem('ladno-hint')){ setTimeout(()=>{ if(!chat.classList.contains('open')) $('.hint',cloud).classList.add('on'); sessionStorage.setItem('ladno-hint','1'); setTimeout(()=>$('.hint',cloud).classList.remove('on'),6000); },4000); } }catch(e){}
 
+
+/* ---------- выпадающее меню «Каталог» ---------- */
+$$('.dd').forEach(dd=>{
+  const b=$('.dd-btn',dd);
+  b.addEventListener('click',e=>{ e.stopPropagation(); const on=!dd.classList.contains('on'); dd.classList.toggle('on',on); b.setAttribute('aria-expanded',on); });
+  dd.addEventListener('mouseenter',()=>{ dd.classList.add('on'); b.setAttribute('aria-expanded','true'); });
+  dd.addEventListener('mouseleave',()=>{ dd.classList.remove('on'); b.setAttribute('aria-expanded','false'); });
+});
+document.addEventListener('click',()=>$$('.dd').forEach(d=>d.classList.remove('on')));
+
+/* ---------- поиск по каталогу ---------- */
+const sIn=$('#searchInput'), sRes=$('#searchRes');
+const PAGES={sladko:'sladko.html',vprok:'vprok.html',gotovo:'gotovo.html',pasta:'pasta.html'};
+function searchIndex(){
+  const out=[]; if(!window.LADNO_LINES) return out;
+  for(const [k,l] of Object.entries(LADNO_LINES)) for(const s of l.sections) for(const it of s.items)
+    out.push({n:s.t.replace('%l',it.n.charAt(0).toLowerCase()+it.n.slice(1)).replace('%',it.n), url:PAGES[k]+'#'+s.id, where:l.title+' · '+s.name});
+  return out;
+}
+const IDX=searchIndex();
+$$('[data-open-search]').forEach(b=>b.addEventListener('click',()=>{ openPanel($('#search')); setTimeout(()=>sIn.focus(),80); }));
+sIn.addEventListener('input',()=>{
+  const q=sIn.value.trim().toLowerCase().replace(/ё/g,'е');
+  if(q.length<2){ sRes.innerHTML=''; return; }
+  const r=IDX.filter(i=>(i.n+' '+i.where).toLowerCase().replace(/ё/g,'е').includes(q)).slice(0,30);
+  sRes.innerHTML= r.length ? r.map(i=>'<li><a href="'+i.url+'">'+esc(i.n)+'<small>'+esc(i.where)+'</small></a></li>').join('')
+    : '<li class="none">Ничего не нашли. Спросите консультанта — он подскажет.</li>';
+});
+sRes.addEventListener('click',e=>{ if(e.target.closest('a')) closeAll(); });
+
 paintCart();
+
+/* ---------- облачко «пристёгнуто» к картинке первого экрана ---------- */
+const heroPic=$('.hero2 .pic');
+if(heroPic){
+  const dock=()=>{
+    const r=heroPic.getBoundingClientRect(), hdr=$('.hdr').getBoundingClientRect().bottom;
+    const top=r.bottom-64-14;
+    if(top>hdr+8 && r.bottom<innerHeight){ cloud.classList.add('docked'); cloud.style.top=top+'px'; }
+    else { cloud.classList.remove('docked'); cloud.style.top=''; }
+  };
+  addEventListener('scroll',dock,{passive:true}); addEventListener('resize',dock); dock(); setTimeout(dock,300);
+}
