@@ -450,3 +450,13 @@ footer .wrap{display:block}
 .btn.light{background:var(--milk);border-color:var(--milk);color:var(--g)}
 .btn.light:hover{background:#fff;border-color:#fff}
 @media (min-width:960px){ .zgrid{grid-template-columns:1.4fr .6fr;align-items:start} .oform{padding:30px} }
+
+/* Карточка-картинка Алёны (поле card в catalog.js) */
+.card .ph.design,.modal .ph.design{aspect-ratio:auto;display:block;padding:0;background:#F3EEE8;position:relative;cursor:default}
+.ph.design .dimg{display:block;width:100%;border:0;padding:0;background:none;cursor:pointer}
+.ph.design img{display:block;width:100%;height:auto}
+.ph.design .hot{position:absolute;left:26.5%;width:47%;top:87%;height:8.6%;border:0;border-radius:999px;background:transparent;cursor:pointer;font-size:0;color:transparent;overflow:hidden;transition:box-shadow .2s,background .2s}
+.ph.design .hot:hover{background:rgba(255,255,255,.12);box-shadow:0 0 0 3px rgba(78,85,58,.35)}
+.ph.design .hot:focus-visible{outline:3px solid var(--olive,#4E553A);outline-offset:2px}
+.card.design .in{gap:4px}
+.card.design .acts{margin-top:auto}

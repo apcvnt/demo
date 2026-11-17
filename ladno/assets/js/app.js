@@ -78,6 +78,11 @@ if(cat && window.LADNO_LINES){
       ITEMS[id]=Object.assign({id,full:nm,st,sec:s.name},it);
       const ph= it.img ? '<img class="photo" src="'+IMG+it.img+'.webp" alt="'+esc(it.n)+'" loading="lazy">'
                        : '<img class="ico" src="'+IMG+'icon-'+key+'.webp" alt=""><em>фото скоро</em>';
+      if(it.card) return '<article class="card design"><div class="ph design"><button class="dimg" type="button" data-more="'+id+'" aria-label="Подробнее: '+esc(it.n)+'">'+
+        '<img src="'+IMG+it.card+'.webp" alt="'+esc(nm)+(it.p?', '+it.p+' ₽':'')+'" loading="lazy" width="1159" height="1358"></button>'+
+        '<button class="hot" type="button" data-add="'+id+'" aria-label="В заявку: '+esc(nm)+'"></button></div>'+
+        '<div class="in"><h3>'+esc(it.n)+'</h3>'+(it.p?'<div class="price">'+it.p.toLocaleString('ru-RU')+' ₽ <small>'+(it.u||'')+'</small></div>':'')+
+        '<div class="acts"><button class="btn line sm" type="button" data-more="'+id+'">Подробнее</button><button class="btn sm" type="button" data-add="'+id+'">В заявку</button></div></div></article>';
       return '<article class="card"><button class="ph" type="button" data-more="'+id+'" aria-label="Подробнее: '+esc(it.n)+'">'+ph+
         (st?'<span class="badge '+st+'">'+(st==='stock'?'В наличии':'Под заказ')+'</span>':'')+'</button>'+
         '<div class="in"><h3>'+esc(it.n)+'</h3>'+(it.d?'<p class="d">'+esc(it.d)+'</p>':'')+
@@ -100,17 +105,21 @@ if(cat && window.LADNO_LINES){
     $$('.sec',cat).forEach(s=>io.observe(s));
   }
 }
+const nf=v=>Number(v).toLocaleString('ru-RU');
 function more(id){
   const it=ITEMS[id], m=$('#modal');
-  $('.ph',m).innerHTML= it.img ? '<img class="photo" src="'+IMG+it.img+'.webp" alt="'+esc(it.n)+'">' : '<img class="ico" src="'+IMG+'icon-'+cat.dataset.line+'.webp" alt="">';
+  $('.ph',m).classList.toggle('design',!!it.card);
+  $('.ph',m).innerHTML= it.card ? '<img src="'+IMG+it.card+'.webp" alt="'+esc(it.full)+'" width="1159" height="1358"><button class="hot" type="button" id="mHot" aria-label="В заявку"></button>' : it.img ? '<img class="photo" src="'+IMG+it.img+'.webp" alt="'+esc(it.n)+'">' : '<img class="ico" src="'+IMG+'icon-'+cat.dataset.line+'.webp" alt="">';
   let h='<p class="kicker">'+esc(it.sec)+'</p><h3>'+esc(it.n)+'</h3>'+(it.d?'<p>'+esc(it.d)+'</p>':'')+'<dl>';
-  h+='<div><dt>Состав</dt><dd>'+(it.c?esc(it.c):'Добавим в ближайшее время')+'</dd></div>';
-  if(it.k) h+='<div><dt>КБЖУ на 100 г</dt><dd class="kbju"><span><b>'+it.k[0]+'</b>ккал</span><span><b>'+it.k[1]+'</b>белки</span><span><b>'+it.k[2]+'</b>жиры</span><span><b>'+it.k[3]+'</b>углев.</span></dd></div>';
-  if(it.h) h+='<div><dt>Хранение</dt><dd>'+esc(it.h)+'</dd></div>';
+  if(it.card) h='<p class="kicker">'+esc(it.sec)+'</p><h3>'+esc(it.full)+'</h3><dl style="display:none">';
+  else h+='<div><dt>Состав</dt><dd>'+(it.c?esc(it.c):'Добавим в ближайшее время')+'</dd></div>';
+  if(it.k && !it.card) h+='<div><dt>КБЖУ на 100 г</dt><dd class="kbju"><span><b>'+nf(it.k[0])+'</b>ккал</span><span><b>'+nf(it.k[1])+'</b>белки</span><span><b>'+nf(it.k[2])+'</b>жиры</span><span><b>'+nf(it.k[3])+'</b>углев.</span></dd></div>';
+  if(it.h && !it.card) h+='<div><dt>Хранение</dt><dd>'+esc(it.h)+'</dd></div>';
   h+='</dl><div class="row"><div class="price'+(it.p?'':' na')+'">'+(it.p? it.p.toLocaleString('ru-RU')+' ₽ '+(it.u||'') : 'Цена уточняется')+'</div>'+
      '<button class="btn" type="button" id="mAdd">В заявку</button></div>';
   $('.in',m).innerHTML=h;
   $('#mAdd').onclick=()=>{ add(id,it.full); $('#mAdd').textContent='Добавлено ✓'; };
+  if($('#mHot')) $('#mHot').onclick=()=>$('#mAdd').click();
   openPanel(m);
 }
 
