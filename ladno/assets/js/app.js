@@ -105,20 +105,39 @@ if(cat && window.LADNO_LINES){
     $$('.sec',cat).forEach(s=>io.observe(s));
   }
 }
-const nf=v=>Number(v).toLocaleString('ru-RU');
+const nf=v=>typeof v==='number'? v.toLocaleString('ru-RU') : String(v);
+const ICO={
+  leaf:'<svg viewBox="0 0 24 24"><path d="M5 19c0-9 6-14 15-14 0 9-5 15-14 15"/><path d="M5 19 13 11"/></svg>',
+  fire:'<svg viewBox="0 0 24 24"><path d="M12 21c-4 0-7-2.6-7-6.5 0-3.3 2.4-5.2 3.6-8 1 1.6 1.4 2.8 1.4 4 1.6-1 2.6-3.6 2.4-7.5C16 5.300 19 9.200 19 14.500 19 18.400 16 21 12 21Z"/><path d="M12 21c-1.700 0-3-1.200-3-3 0-1.600 1.300-2.700 2-4 .900 1 2 2 2 2 .600-.500 1-1.200 1-2 1.300 1.200 1 2.500 1 4 0 1.800-1.300 3-3 3Z"/></svg>',
+  snow:'<svg viewBox="0 0 24 24"><path d="M12 2v20M3.300 7l17.400 10M3.300 17 20.700 7M9 3.500l3 2.500 3-2.500M9 20.500l3-2.500 3 2.500M3 10.500l3.800-.800L5.600 6M18.400 18l-1.200-3.700 3.800-.800M21 10.500l-3.800-.800L18.400 6M5.600 18l1.200-3.700-3.800-.800"/></svg>',
+  weight:'<svg viewBox="0 0 24 24"><path d="M9 7a3 3 0 1 1 6 0"/><path d="M6.500 7h11l2.500 13H4Z"/></svg>',
+  pot:'<svg viewBox="0 0 24 24"><path d="M4 10h16v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4Z"/><path d="M2 10h20M9 6c0-1 1-1 1-2M13 6c0-1 1-1 1-2"/></svg>',
+  cart:'<svg viewBox="0 0 24 24"><path d="M3 4h2.500l2.200 10.500h10.300L20.500 7.500H7"/><circle cx="9.500" cy="19" r="1.400"/><circle cx="17" cy="19" r="1.400"/></svg>'
+};
+const LINE_NAMES={sladko:['Ладно Сладко','Десерты и выпечка'],vprok:['Ладно Впрок','Заморозка на каждый день'],gotovo:['Ладно Готово','Готовые блюда'],pasta:['Ладно Паста','Свежая паста и тесто']};
 function more(id){
-  const it=ITEMS[id], m=$('#modal');
+  const it=ITEMS[id], m=$('#modal'), ln=LINE_NAMES[cat.dataset.line]||['',''];
+  m.classList.add('pcard');
   $('.ph',m).classList.toggle('design',!!it.card);
-  $('.ph',m).innerHTML= it.card ? '<img src="'+IMG+it.card+'.webp" alt="'+esc(it.full)+'" width="1159" height="1358"><button class="hot" type="button" id="mHot" aria-label="В заявку"></button>' : it.img ? '<img class="photo" src="'+IMG+it.img+'.webp" alt="'+esc(it.n)+'">' : '<img class="ico" src="'+IMG+'icon-'+cat.dataset.line+'.webp" alt="">';
-  let h='<p class="kicker">'+esc(it.sec)+'</p><h3>'+esc(it.n)+'</h3>'+(it.d?'<p>'+esc(it.d)+'</p>':'')+'<dl>';
-  if(it.card) h='<p class="kicker">'+esc(it.sec)+'</p><h3>'+esc(it.full)+'</h3><dl style="display:none">';
-  else h+='<div><dt>Состав</dt><dd>'+(it.c?esc(it.c):'Добавим в ближайшее время')+'</dd></div>';
-  if(it.k && !it.card) h+='<div><dt>КБЖУ на 100 г</dt><dd class="kbju"><span><b>'+nf(it.k[0])+'</b>ккал</span><span><b>'+nf(it.k[1])+'</b>белки</span><span><b>'+nf(it.k[2])+'</b>жиры</span><span><b>'+nf(it.k[3])+'</b>углев.</span></dd></div>';
-  if(it.h && !it.card) h+='<div><dt>Хранение</dt><dd>'+esc(it.h)+'</dd></div>';
-  h+='</dl><div class="row"><div class="price'+(it.p?'':' na')+'">'+(it.p? it.p.toLocaleString('ru-RU')+' ₽ '+(it.u||'') : 'Цена уточняется')+'</div>'+
-     '<button class="btn" type="button" id="mAdd">В заявку</button></div>';
+  $('.ph',m).innerHTML= it.card ? '<img src="'+IMG+it.card+'.webp" alt="'+esc(it.full)+'" width="1159" height="1358"><button class="hot" type="button" id="mHot" aria-label="В заявку"></button>'
+    : it.img ? '<img class="photo" src="'+IMG+it.img+'.webp" alt="'+esc(it.full)+'">' : '<img class="ico" src="'+IMG+'icon-'+cat.dataset.line+'.webp" alt="">';
+  // название в две строки, как у Алёны: первое слово крупно, остальное ниже
+  const sp=it.full.indexOf(' ');
+  const title= sp>0 ? esc(it.full.slice(0,sp))+'<span>'+esc(it.full.slice(sp+1))+'</span>' : esc(it.full);
+  const unit=(it.u||'').replace(/^за\s+/,'');
+  let h='<div class="pline"><b>'+ln[0]+'</b><span>'+esc(it.sec)+'</span></div>'+
+        '<h3 class="ptitle">'+title+'</h3>'+(it.d?'<p class="pdesc">'+esc(it.d)+'</p>':'')+
+        '<div class="pprice">'+(it.p?'<b>'+it.p.toLocaleString('ru-RU')+' ₽</b>'+(unit?'<span class="pill">'+esc(unit)+'</span>':'')
+                                :'<b class="na">Цена уточняется</b>')+'</div>'+
+        '<button class="btn pbuy" type="button" id="mAdd">'+ICO.cart+'<span>В заявку</span></button>';
+  let info='<div class="pi wide">'+ICO.leaf+'<h4>Состав</h4><p>'+(it.c?esc(it.c):'Добавим в ближайшее время')+'</p></div>';
+  if(it.k) info+='<div class="pi">'+ICO.fire+'<h4>КБЖУ на 100 г</h4><p><b>'+nf(it.k[0])+' ккал</b><br><span>Б: '+nf(it.k[1])+' г</span><br><span>Ж: '+nf(it.k[2])+' г</span><br><span>У: '+nf(it.k[3])+' г</span></p></div>';
+  if(it.h) info+='<div class="pi">'+ICO.snow+'<h4>Хранение</h4><p>'+esc(it.h)+'</p></div>';
+  if(it.o) info+='<div class="pi">'+ICO.weight+'<h4>Выход</h4><p>'+esc(it.o)+'</p></div>';
+  h+='<div class="pinfo">'+info+'</div>';
+  if('prep' in it) h+='<details class="pprep"><summary>'+ICO.pot+'<span><b>Как приготовить</b><small>Пошаговая инструкция и видео-рецепт</small></span></summary><p>'+(it.prep?esc(it.prep):'Инструкцию и видео-рецепт добавим в ближайшее время.')+'</p></details>';
   $('.in',m).innerHTML=h;
-  $('#mAdd').onclick=()=>{ add(id,it.full); $('#mAdd').textContent='Добавлено ✓'; };
+  $('#mAdd').onclick=()=>{ add(id,it.full); $('#mAdd span').textContent='Добавлено ✓'; };
   if($('#mHot')) $('#mHot').onclick=()=>$('#mAdd').click();
   openPanel(m);
 }
